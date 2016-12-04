@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>只能输入数字</title>
+    <link rel="stylesheet" href="../dist/css/bootstrap.css">
+    <style>
+        .box {
+            margin-top: 100px ;
+            margin-left: 400px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+
+<div class="col-sm-6">
+    <input  class="form-control" id="input" placeholder="请输入数字">
+</div>
+    <button id="btn" type="button" class="btn btn-primary">提交</button>
+</div>
+</body>
+</html>
+<script>
+    window.onload=function(){
+        var btn=document.getElementById("btn");
+        var input=document.getElementById("input");
+
+        var a='1234567aadsas89';
+        var reg=/([0-9])*/g;
+        console.log(a.match(reg));
+    }
+</script>

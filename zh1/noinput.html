@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>禁止用户输入</title>
+    <link rel="stylesheet" href="../dist/css/bootstrap.css">
+    <style>
+        .box {
+            margin-top: 100px;
+            margin-left: 300px;
+        }
+        #popover-content1 {
+            display: none;
+
+        }
+        #popover-content2 {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-6">
+                <input disabled  class="form-control  " id="inputEmail3" placeholder="用户名">
+            </div>
+            <div id="popover-content1"><div class="">不能为空</div></div>
+
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-6">
+                <input type="password" class="form-control" id="inputPassword3" placeholder="密码">
+            </div>
+            <div id="popover-content2"><div class="">不能为空</div></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-6">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> 记住我
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">登陆</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+<script>
+    window.onload=function(){
+        var btn=document.getElementsByClassName("btn")[0];
+        var name=document.getElementById("inputEmail3");
+        var pass=document.getElementById("inputPassword3");
+        var popover_content1=document.getElementById("popover-content1");
+        var popover_content2=document.getElementById("popover-content2");
+        btn.onclick= function () {
+            console.log(pass.value);
+            if(name.value==''&&pass.value==''){
+                popover_content1.style.display="block";
+                popover_content2.style.display="block";
+                return false;
+
+            }
+            else if(name.value==''){
+                popover_content1.style.display="block";
+                return false;
+            }
+            else if(pass.value==''){
+                popover_content2.style.display="block";
+                return false;
+            }
+        }
+        name.onfocus=function(){
+            popover_content1.style.display="none";
+        }
+        pass.onfocus=function(){
+            popover_content2.style.display="none";
+        }
+
+    }
+</script>

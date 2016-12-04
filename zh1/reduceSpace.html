@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>去除两边的空格</title>
+    <link rel="stylesheet" href="../styles/base.css">
+    <style>
+        .box {
+            margin: 100px auto;
+            width: 50%;
+            text-align: center;
+        }
+        .btn {
+            width: 70px;
+            height: 30px;
+            border: 0;
+            background-color: skyblue;
+            cursor: pointer;
+
+        }
+        .input {
+            border: 1px solid #cccccc;
+            padding: 5px 6px;
+            margin-right: 10px;
+            height: 30px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input class="input" type="text" value="     需要过滤的空格      " name="" id="input">
+        <button class="btn" id="btn">过滤</button>
+    </div>
+</body>
+</html>
+<script>
+    window.onload=function(){
+        var btn=document.getElementById("btn");
+        var input=document.getElementById("input");
+        input.onfocus=function(){
+            this.style.boxShadow="0 0 1px 1px skyblue";
+            this.style.borderColor="skyblue";
+        }
+        input.onblur=function(){
+            this.style.boxShadow="";
+            this.style.borderColor="#ccc";
+        }
+        btn.onclick=function(){
+            var content=input.value;
+            var trim_content=trim(content);
+            console.log(trim_content);
+            input.value=trim_content;
+        }
+
+        function trim(val){
+            var content=val.replace(/(^\s*)|(\s*$)/g,'');
+            return content;
+        }
+    }
+</script>
