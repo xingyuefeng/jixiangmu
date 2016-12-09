@@ -25,29 +25,36 @@ window.onload=function(){
     }
 
 
+    //li点击事件
 
     for(var i=0;i<outer_link.length;i++){
-        var flag=true;
         outer_link[i].onclick = function () {
-
-            if(flag){
+            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+            var a=getStyle(this.nextElementSibling,'display')
+            console.log(a)
+            if(a=='none'){
+                for(var i=0;i<innerUl.length;i++){
+                    innerUl[i].style.display='none';
+                }
                 this.nextElementSibling.style.display='block';
+            }
+            else {
+                this.nextElementSibling.style.display='none';
+            }
+            //阻止文字被选中
+            if(document.all){
+                document.onselectstart= function(){return false;}; //for ie
+            }else{
+                document.onmousedown= function(){return false;};
+                document.onmouseup= function(){return true;};
+            }
+            document.onselectstart = new Function('event.returnValue=false;');
 
-                flag=false;
-            }
-            else{
-                this.nextElementSibling.style.display='none'
-                flag=true;
-            }
+
 
         }
 
     }
-//                //li点击事件
-//            for(var i=0;i<innerUl.length;i++) {
-//                a[i].onclick = function () {
-//
-//                }
 //
 
 

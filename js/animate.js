@@ -1,107 +1,67 @@
 /**
- * Created by xingyuefeng on 2016/12/3.
+ * Created by andy on 2015/11/22.
  */
-//封装动画函数
-function animate(obj,data,fn){
+// 多个属性运动框架  添加回调函数
+function animate(obj,json,fn) {  // 给谁    json
     clearInterval(obj.timer);
-    obj.timer=setInterval(function () {
-        for(var attr in data){
+    obj.timer = setInterval(function() {
+        var flag = true;  // 用来判断是否停止定时器   一定写到遍历的外面
+        for(var attr in json){   // attr  属性     json[attr]  值
             //开始遍历 json
-            // 计算步长    用 target 位置 减去当前的位置current  除以 10
+            // 计算步长    用 target 位置 减去当前的位置  除以 10
+            // console.log(attr);
+            var current = 0;
+            if(attr == "opacity")
+            {
+                current = parseInt(getStyle(obj,attr)*100);
+            }
+            else
+            {
+                current = parseInt(getStyle(obj,attr)); // 数值
+            }
+            // console.log(current);
+            // 目标位置就是  属性值
+            var step = ( json[attr] - current) / 10;  // 步长  用目标位置 - 现在的位置 / 10
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            //判断透明度
+            if(attr == "opacity")  // 判断用户有没有输入 opacity
+            {
+                if("opacity" in obj.style)  // 判断 我们浏览器是否支持opacity
+                {
+                    // obj.style.opacity
+                    obj.style.opacity = (current + step) /100;
+                }
+                else
+                {  // obj.style.filter = alpha(opacity = 30)
+                    obj.style.filter = "alpha(opacity = "+(current + step)+")";
+                    console.log(current);
+                }
+            }
+            else if(attr == "zIndex")
+            {
+                obj.style.zIndex = json[attr];
+            }
+            else
+            {
+                obj.style[attr] = current  + step + "px" ;
+            }
 
-            if(attr=="opacity") {
-                var current = Math.round(parseInt(getStyle(obj,attr)*100)) || 0;
-
-            }else {
-                var current = parseInt(getStyle(obj, attr));
+            if(current != json[attr])  // 只要其中一个不满足条件 就不应该停止定时器  这句一定遍历里面
+            {
+                flag =  false;
             }
-                var step=Math.ceil((data[attr]-current)/10);
-
-
-            if(current==data[attr]){
-                clearInterval(obj.timer);
-            }
-            if(attr=="width") {
-                obj.style.width = current + step + "px";
-            }
-            if(attr=="paddingLeft"){
-                obj.style.paddingLeft = current + step + "px";
-            }
-            if(attr=="opacity"){
-                console.log(step);
-                console.log(current);
-                obj.style.opacity = (current + step)/100;
-            }
-            //if(attr=="backgroundColor"){
-            //    console.log(current);
-            //    obj.style.opacity = "rgba(135,206,250,"+(current + step)/100+")";
-            //}
         }
-    },30);
-
+        if(flag)  // 用于判断定时器的条件
+        {
+            clearInterval(obj.timer);
+            //alert("ok了");
+            if(fn)   // 很简单   当定时器停止了。 动画就结束了  如果有回调，就应该执行回调
+            {
+                fn(); // 函数名 +  （）  调用函数  执行函数
+            }
+        }
+    },30)
 }
-//// 多个属性运动框架  添加回调函数
-//function animate(obj,json,fn) {  // 给谁    json
-//    clearInterval(obj.timer);
-//    obj.timer = setInterval(function() {
-//        var flag = true;  // 用来判断是否停止定时器   一定写到遍历的外面
-//        for(var attr in json){   // attr  属性     json[attr]  值
-//            //开始遍历 json
-//            // 计算步长    用 target 位置 减去当前的位置  除以 10
-//            // console.log(attr);
-//            var current = 0;
-//            if(attr == "opacity")
-//            {
-//                current = Math.round(parseInt(getStyle(obj,attr)*100)) || 0;
-//                console.log(current);
-//            }
-//            else
-//            {
-//                current = parseInt(getStyle(obj,attr)); // 数值
-//            }
-//            // console.log(current);
-//            // 目标位置就是  属性值
-//            var step = ( json[attr] - current) / 10;  // 步长  用目标位置 - 现在的位置 / 10
-//            step = step > 0 ? Math.ceil(step) : Math.floor(step);
-//            //判断透明度
-//            if(attr == "opacity")  // 判断用户有没有输入 opacity
-//            {
-//                if("opacity" in obj.style)  // 判断 我们浏览器是否支持opacity
-//                {
-//                    // obj.style.opacity
-//                    obj.style.opacity = (current + step) /100;
-//                }
-//                else
-//                {  // obj.style.filter = alpha(opacity = 30)
-//                    obj.style.filter = "alpha(opacity = "+(current + step)* 10+")";
-//
-//                }
-//            }
-//            else if(attr == "zIndex")
-//            {
-//                obj.style.zIndex = json[attr];
-//            }
-//            else
-//            {
-//                obj.style[attr] = current  + step + "px" ;
-//            }
-//
-//            if(current != json[attr])  // 只要其中一个不满足条件 就不应该停止定时器  这句一定遍历里面
-//            {
-//                flag =  false;
-//            }
-//        }
-//        if(flag)  // 用于判断定时器的条件
-//        {
-//            clearInterval(obj.timer);
-//            //alert("ok了");
-//            if(fn)   // 很简单   当定时器停止了。 动画就结束了  如果有回调，就应该执行回调
-//            {
-//                fn(); // 函数名 +  （）  调用函数  执行函数 暂且这样替代
-//            }
-//        }
-//    },30)
-//}
 function getStyle(obj,attr) {  //  谁的      那个属性
     if(obj.currentStyle)  // ie 等
     {
