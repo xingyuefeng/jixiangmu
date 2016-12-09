@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+    <link rel="stylesheet" href="../dist/css/bootstrap.css">
+    <style>
+        .box {
+            width: 500px;
+            margin: 100px auto;
+        }
+
+
+
+        .box input {
+            width: 100px;
+            height: 30px;
+            float: left;
+            margin-left: 30px;
+        }
+        button {
+            width: 50px;
+            margin-left: 10px;
+        }
+        .content {
+            width: 500px;
+            margin: 0 auto;
+            color: white;
+            line-height: 30px;
+            text-align: center;
+        }
+        .content div {
+            width: 100px;
+            height: 30px;
+            float: left;
+            background-color: black;
+            margin-left: 30px;
+            position: relative;
+        }
+        .content div:nth-child(1)::after {
+            content: ':';
+            height: 30px;
+            width: 10px;
+            position: absolute;
+            right: -20px;
+            ackground-color: white;
+            color: black;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .content div:nth-child(2)::after {
+            content: ':';
+            height: 30px;
+            width: 10px;
+            position: absolute;
+            right: -20px;
+            background-color: white;
+            color: black;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input id="h" placeholder="请输入小时..." type="text">
+        <input id="m" placeholder="请输入分钟..." type="text">
+        <input id="s" placeholder="请输入秒数..."type="text">
+        <button id="btn" type="button" color="blue" class="btn btn-primary">确定</button>
+    </div>
+    <div id="content" class="content">
+        <div id="c_h"></div>
+        <div id="c_m"></div>
+        <div id="c_s"></div>
+    </div>
+</body>
+</html>
+<script>
+    window.onload=function(){
+        var btn=document.getElementById("btn");
+        var hou=document.getElementById("h");
+        var min=document.getElementById("m");
+        var sec=document.getElementById("s");
+        var content=document.getElementById("content").children;
+        btn.onclick=function(){
+            var h= parseInt(hou.value) ||0;
+            var m= parseInt(min.value) ||0;
+            var s= parseInt(sec.value) ||0;
+            var a=h*60*60 +m*60+s;
+
+            var timer=setInterval(function(){
+                a--;
+                if(a<0){
+                    alert("时间结束")
+                    clearInterval(timer);
+                }else {
+                    content[0].innerHTML = Math.floor(a / 60 / 60);
+                    content[1].innerHTML = Math.floor(a / 60 % 60);
+                    content[2].innerHTML = Math.floor(a % 60 % 60);
+                }
+
+            },1000)
+        }
+    }
+</script>
