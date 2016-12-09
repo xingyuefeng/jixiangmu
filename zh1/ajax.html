@@ -34,7 +34,7 @@
             var name=city.val() || '无锡';
             var value=urlencode(name);
 //            var url='http://v.juhe.cn/weather/index?format=2&cityname=%E6%97%A0%E9%94%A1&key=5231ca89c935ffb49d739a66cdfa5d48';
-            var url="http://v.juhe.cn/weather/index?format=2&cityname="+value+"&key=5231ca89c935ffb49d739a66cdfa5d48";
+            var url="https://v.juhe.cn/weather/index?format=2&cityname="+value+"&key=5231ca89c935ffb49d739a66cdfa5d48";
             $.ajax({
                 url: url,
                 type: 'get',
