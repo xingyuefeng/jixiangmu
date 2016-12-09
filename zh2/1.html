@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>图片放大镜效果</title>
+    <link rel="stylesheet" href="../styles/base.css">
+    <style>
+        .small-box,.big-box {
+            float: left;
+            margin-top: 100px;
+
+        }
+        .box {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.4);
+            display: none;
+        }
+        .small-box {
+            margin-left: 300px;
+            position: relative;
+            cursor: move;
+
+
+        }
+        .big-box {
+            height: 407px;
+            width: 410px;
+            margin-left: 150px;
+            /*display: none;*/
+            overflow: hidden;
+            position: relative;
+            /*border: 1px solid red;*/
+
+        }
+       #big {
+
+            position: absolute;
+           left: 0;
+           top: 0;
+
+        }
+    </style>
+
+</head>
+<body>
+    <div  id="small_box" class="small-box">
+        <img id="img" src="../images/small.jpg" alt="" class="small">
+        <div id="box" class="box"></div>
+    </div>
+    <div id="big_box" class="big-box">
+        <img id="big" src="../images/big.jpg" alt="">
+    </div>
+</body>
+</html>
+<script>
+    window.onload=function() {
+        var box=document.getElementById("box");
+        var img=document.getElementById("img");
+        var small_box=document.getElementById("small_box");
+        var big_box=document.getElementById("big_box");
+        var box_left=small_box.offsetLeft;
+        var box_top=small_box.offsetTop;
+        var big=document.getElementById("big");
+        small_box.onmouseenter=function(event){
+            box.style.display='block';
+            big_box.style.display='block';
+        }
+        var left=0;
+        var top=0;
+        small_box.onmousemove=function(event){
+            var event=event || window.event;
+            left=event.clientX-box_left-box.offsetWidth/2;
+            top=event.clientY-box_top-box.offsetHeight/2;
+            if(left<0){
+                left=0;
+            }
+           if(left>small_box.offsetWidth-box.offsetWidth){
+                left=small_box.offsetWidth-box.offsetWidth;
+            }
+            if(top<0){
+                top=0;
+            }
+             if(top>small_box.offsetHeight-box.offsetHeight){
+                top=small_box.offsetHeight-box.offsetHeight;
+            }
+            box.style.left = left + "px";
+            box.style.top = top + "px";
+
+            //计算移动的比例
+            var x=left/(small_box.offsetWidth-box.offsetWidth)*(big.offsetWidth-big_box.offsetWidth);
+            var y=top/(small_box.offsetHeight-box.offsetHeight)*(big.offsetHeight-big_box.offsetHeight);
+
+
+            big.style.left=-x+"px";
+            big.style.top=-y+"px";
+            
+        }
+
+
+        small_box.onmouseleave=function(){
+            box.style.display='none';
+            big_box.style.display='none';
+        }
+
+
+    }
+</script>

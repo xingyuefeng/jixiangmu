@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3新特性</title>
+    <link rel="stylesheet" href="../styles/base.css">
+    <style>
+        .box {
+            width: 1000px;
+            height: 300px;
+            margin: 100px auto;
+            /*border: 1px solid red;*/
+        }
+        .box>div{
+            width: 250px;
+            height: 250px;
+            margin-left: 30px;
+            float: left;
+            margin-top: 30px;
+        }
+        .box>div:nth-child(1) {
+            background: url("../zh4/images/zc1.jpg") no-repeat;
+            background-size: 100% 100%;
+            margin-left: 50px;
+            transition: all 1.5s;
+        }
+        .box>div:nth-child(1):hover {
+            background-size: 120% 120%;
+            transition: all 1.5s;
+        }
+        .box>div:nth-child(2){
+            /*border: 1px solid red;*/
+            /*width: 400px;*/
+            line-height: 250px;
+            background-color: deepskyblue;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .box>div:nth-child(2) span {
+            float: left;
+            margin: 0 20px;
+            transition: all 1.5s;
+        }
+        .box>div:nth-child(2):hover span {
+            margin:0;
+            transition: all 1.5s;
+        }
+        .box>div:nth-child(2):hover span:nth-child(1){
+            padding-left: 30%;
+        }
+        .box>div:nth-child(3){
+            /*border: 1px solid red;*/
+            position: relative;
+        }
+        .slide {
+            bottom: 10px;
+            position: absolute;
+            transform: rotate(180deg);
+        }
+         .slide>div{
+            width: 30px;
+            float: left;
+            margin-left: 10px;
+            background-color: purple;
+            height: 100px;
+             animation: move  ease  infinite;
+        }
+         .slide>div:nth-child(1){
+            animation-duration: 2s;
+        }
+        .slide>div:nth-child(2){
+            animation-duration: 3s;
+        }
+         .slide>div:nth-child(3){
+            animation-duration: 1.5s;
+        }
+        .slide>div:nth-child(4){
+            animation-duration: 4s;
+        }
+        .slide>div:nth-child(5){
+            animation-duration: 2.5s;
+        }
+        .slide>div:nth-child(6){
+            animation-duration: 1.1s;
+        }
+        @keyframes move {
+            0% {
+                height: 30px;
+            }
+            4% {
+                height: 35px;
+            }
+            8% {
+                height: 50px;
+            }
+            12% {
+                height: 70px;
+            }
+            16% {
+                height: 20px;
+            }
+            20% {
+                height: 80px;
+            }
+            24% {
+                height: 90px;
+            }
+            28% {
+                height: 100px;
+            }
+            32% {
+                height: 80px;
+            }
+            36% {
+                height: 70px;
+            }
+            40% {
+                height: 60px;
+            }
+            44% {
+                height: 90px;
+            }
+            48% {
+                height: 70px;
+            }
+            53% {
+                height: 40px;
+            }
+            57% {
+                height: 100px;
+            }
+            61% {
+                height: 50px;
+            }
+            65% {
+                height: 40px;
+            }
+            69% {
+                height: 30px;
+            }
+            73% {
+                height: 70px;
+            }
+            77% {
+                height: 80px;
+            }
+            81% {
+                height: 20px;
+            }
+            85% {
+                height: 10px;
+            }
+            89% {
+                height: 65px;
+            }
+            93% {
+                height: 75px;
+            }
+            97% {
+                height: 85px;
+            }
+            100% {
+                height: 100px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div></div>
+    <div>
+        <span>这</span>
+        <span>都</span>
+        <span>是</span>
+        <span>命</span>
+    </div>
+    <div>
+        <div class="slide">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

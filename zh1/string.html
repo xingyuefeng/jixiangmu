@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>文本框中的文字自动滚动</title>
+    <link rel="stylesheet" href="../dist/css/bootstrap.css">
+    <style>
+        .box {
+            margin: 100px auto;
+            width: 500px;
+            position: relative;
+            /*border: 1px solid red;*/
+            font-size: 16px;
+        }
+
+        .content {
+            position: absolute;
+            /*border: 1px solid red;*/
+            width: 500px;
+            left: -28px;
+            top: 100px;
+            height: 300px;
+            overflow: hidden;
+        }
+        ul {
+            position: absolute;
+            list-style: none;
+            left: 0;
+            top: 0;
+        }
+
+    </style>
+    <script src="../js/animate.js" ></script>
+</head>
+<body>
+<div class="box">
+    <div class="title">文本框中的文字自动滚动</div>
+    <div  class="content">
+        <ul id="content">
+            <li>日照香炉生紫烟，</li>
+            <li>遥看瀑布挂前川。</li>
+            <li>飞流直下三千尺，</li>
+            <li>疑是银河落九天。</li>
+            <li>秋风起兮白云飞，草木黄落兮雁南归。</li>
+            <li>兰有秀兮菊有芳，怀佳人兮不能忘。</li>
+            <li>泛楼船兮济汾河，横中流兮扬素波。</li>
+            <li>箫鼓鸣兮发棹歌，欢乐极兮哀情多。</li>
+            <li>少壮几时兮奈老何！</li>
+
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    window.onload=function(){
+        var content=document.getElementById("content");
+        var len=content.children.length;
+        var lis_height=content.offsetHeight;
+//        content.appendChild(content.children[0]);
+        var step=25;
+//
+        setInterval(function(){
+            setTimeout(function(){
+                content.style.top=0;
+                content.appendChild(content.children[0]);
+                animate(content,{top:-20})
+            },1)
+        },1000)
+
+
+
+
+    }
+</script>

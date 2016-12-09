@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8" >
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<title>天气预报</title>
+
+
+<div id="mf_weather">
+
+    <button id="search">天气查询</button>
+    <input id="city" type="text" value="tbody">
+    <div class="ctn">
+        <div id="mufeng">
+        </div>
+        <div id="future"></div>
+    </div>
+</div>
+</html>
+<script id="script" ></script>
+<script>
+    window.onload=function(){
+        var btn=document.getElementById("search");
+        var city=document.getElementById("city");
+
+        function jsonpCallback(result) {
+            //alert(result);
+            for(var i in result) {
+                alert(i+":"+result[i]);//循环输出a:1,b:2,etc.
+            }
+        }
+
+
+        btn.onclick=function() {
+            var name = city.value || '无锡';
+            var value = urlencode(name);
+            var url = "http://v.juhe.cn/weather/index?format=2&cityname=" + value + "&key=5231ca89c935ffb49d739a66cdfa5d48&callback=jsonpCallback";
+            var script = document.createElement('script');
+            script.src = url;oooooooooooooooooooou
+        }
+
+
+
+
+
+
+        function urlencode (str) {
+            str = (str + '').toString();
+            return encodeURIComponent(str).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').
+            replace(/\)/g, '%29').replace(/\*/g, '%2A').replace(/%20/g, '+');
+        }
+
+    }
+</script>

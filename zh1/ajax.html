@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8" >
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<title>天气预报</title>
+<style>
+    #mf_weather {
+        margin-top: 100px;
+        text-align: center;
+    }
+    #content {
+        /*border: 1px solid red;*/
+        margin: 0 auto;
+        text-align: center;
+    }
+    table {
+        margin: 0 auto;
+    }
+</style>
+<script src="../js/jquery.js" ></script>
+<div id="mf_weather">
+    <button id="search">天气查询</button>
+    <input id="city" type="text" placeholder="输入城市名..." value="">
+    <div id="content">
+
+    </div>
+</div>
+</html>
+<script>
+    $(document).ready(function(){
+        var btn=$("#search");
+        var city=$("#city");
+        btn.click(function(){
+            var name=city.val() || '无锡';
+            var value=urlencode(name);
+//            var url='http://v.juhe.cn/weather/index?format=2&cityname=%E6%97%A0%E9%94%A1&key=5231ca89c935ffb49d739a66cdfa5d48';
+            var url="http://v.juhe.cn/weather/index?format=2&cityname="+value+"&key=5231ca89c935ffb49d739a66cdfa5d48";
+            $.ajax({
+                url: url,
+                type: 'get',
+//                data:{location:city},
+                dataType: 'jsonp',
+                success:function(data){
+                    var today=data.result.today;
+                    var str='';
+                    str+='<table>';
+                    str+='<tr><td>城市:</td><td>'+today.city+'</td></tr>';
+                    str+='<tr><td>日期:</td><td>'+today.date_y+'</td></tr>';
+                    str+='<tr><td>穿衣:</td><td>'+today.dressing_advice+'</td></tr>';
+                    str+='<tr><td>状况:</td><td>'+today.dressing_index+'</td></tr>';
+                    str+='<tr><td>游玩:</td><td>'+today.exercise_index+'</td></tr>';
+                    str+='<tr><td>温度:</td><td>'+today.temperature+'</td></tr>';
+                    str+='<tr><td>天气:</td><td>'+today.weather+'</td></tr>';
+                    str+='<tr><td>星期:</td><td>'+today.week+'</td></tr>';
+                    str+='<tr><td>风向:</td><td>'+today.wind+'</td></tr>';
+                    str+='</table>';
+                    $("#content").html(str);
+
+                },
+                error:function(){
+                    $("#content").html("请重新输入你要搜索的城市");
+                }
+            });
+        });
+
+        function urlencode (str) {
+            str = (str + '').toString();
+            return encodeURIComponent(str).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').
+            replace(/\)/g, '%29').replace(/\*/g, '%2A').replace(/%20/g, '+');
+        }
+
+    })
+</script>
