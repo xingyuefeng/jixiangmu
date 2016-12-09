@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电扇网站图片转换</title>
+    <link rel="stylesheet" href="../styles/base.css">
+    <style>
+        .box {
+            width: 711px;
+            height: 684px;
+            margin: 100px auto;
+            position: relative;
+
+            overflow: hidden;
+        }
+        .box>ul {
+            width: 4000px;
+            position: absolute;
+            left: 0;
+            top:0;
+        }
+        .box>ul>li {
+            float: left;
+
+        }
+        #img {
+            opacity: 1;
+        }
+        .btn {
+            position: absolute;
+            color: white;
+            line-height: 30px;
+            text-align: center;
+            top: 312px;
+            font-size: 13px;
+        }
+        .btn>ul>li {
+            float: left;
+            width: 177px;
+            background-color: rgba(0,0,0,.5);
+            height: 30px;
+           margin-left: 1px;
+            cursor: pointer;
+        }
+        .btn>ul>li:nth-child(1){
+            margin-left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul id="img">
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/2.jpg" alt=""></li>
+            <li><img src="images/3.jpg" alt=""></li>
+            <li><img src="images/4.jpg" alt=""></li>
+            <li><img src="images/1.jpg" alt=""></li>
+        </ul>
+        <div id="btn" class="btn">
+            <ul>
+                <li>草莓网 彩妆大促</li>
+                <li>中秋送礼 浓情促销</li>
+                <li>聚蟹客 中秋好礼</li>
+                <li>赚网 相思惠明月</li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>
+<script src="手风琴效果/animate.js" ></script>
+<script>
+    window.onload=function(){
+        var img=document.getElementById("img");
+        var btn=document.getElementById("btn");
+        var lis=btn.children[0].children
+        lis[0].style.backgroundColor='rgba(255,0,0,.7)';
+        for(var i=0;i<lis.length;i++) {
+            lis[i].index=i;
+            lis[i].onmouseenter = function () {
+                clearInterval(timer);
+                for(var i=0;i<lis.length;i++){
+                    lis[i].style.backgroundColor="rgba(0,0,0,.7)";
+                }
+                this.style.backgroundColor="rgba(255,0,0,.7)"
+                img.style.opacity=0;
+                console.log(this.index)
+                img.style.left= -this.index*711+"px";
+                setTimeout(function(){
+                    animate(img,{'opacity':100});
+                },100)
+                index=this.index;
+            }
+            lis[i].onmouseleave = function () {
+                this.style.backgroundColor="rgba(0,0,0,.7)"
+                timer=setInterval(move,3000);
+            }
+        }
+
+
+        var index=0;
+
+        var timer=setInterval(move,3000);
+        function move(){
+            var step=711;
+            for(var i=0;i<lis.length;i++){
+                lis[i].style.backgroundColor="rgba(0,0,0,.7)";
+            }
+            index++;
+            if(index>3){
+                index=0;
+            }
+            lis[index].style.backgroundColor="rgba(255,0,0,.7)";
+            img.style.left=-index*step+"px";
+            img.style.opacity=0;
+            setTimeout(function(){
+                animate(img,{'opacity':100});
+            },100)
+        }
+    }
+</script>

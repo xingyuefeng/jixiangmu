@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>跟随对联广告</title>
+    <link rel="stylesheet" href="../styles/base.css">
+    <style>
+        body {
+            height:  2000px;
+        }
+        .banner {
+            margin-top: 100px;
+            position: absolute;
+        }
+        .left-banner {
+
+            left: 20px;
+        }
+        .right-banner {
+            right: 20px;
+            margin-right: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div  class="left-banner banner">
+            <img src="../images/ad.jpg" alt="">
+        </div>
+        <div class="right-banner banner">
+            <img src="../images/ad.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>
+<script src="../js/animate.js"></script>
+<script>
+    window.onload=function(){
+        var box=document.getElementById("box");
+        window.onscroll=function(){
+            var height=document.body.scrollTop;
+            var top=height+box.offsetHeight;
+            console.log(top)
+            for(var i=0; i<box.children.length;i++){
+                animate(box.children[i],{"top":top});
+            }
+
+        }
+    }
+</script>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟滚动条</title>
+    <link rel="stylesheet" href="../styles/base.css">
+    <style>
+        html { overflow-x: hidden; overflow-y: hidden; }
+        .box {
+            width: 500px;
+            margin: 50px auto;
+            height: 600px;
+            border: 1px solid lightgray;
+            overflow: hidden;
+            /*overflow-x: hidden;*/
+            position: relative;
+            border-radius: 5px;
+        }
+        .content {
+            width: 450px;
+            height: 2000px;
+            float: left;
+            position: absolute;
+        }
+        .scroll {
+            float: right;
+            position: absolute;
+            width: 20px;
+            height: 600px;
+            right: 0;
+            background-color: lightgray;
+        }
+        .mark {
+            /*height: 100px;*/
+            width: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: lightskyblue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+ <div id="box" class="box">
+    <div id="content" class="content">
+        &nbsp;&nbsp;人说长嘴就是为了说话，这种定义很不准确，嘴还是摄进营养的地方。嘴只能说有说话这种功能，为了交流更方便些，未必就是为了说话，你不说话，人不会依为你是哑吧，你说了话，说的人不爱听，你还不如是个哑吧。
+
+        <br> &nbsp;&nbsp;人和人之间，不用语言交流，手势亦可表达感情，交流彼此之间的情感，有时一个眼神亦能说明问题，当彼此之间有某种默契时，话外音，似乎也能勾通彼此之间的所想，有时话语还无法穷尽人和人彼此之间的感情。
+
+        <br> &nbsp;&nbsp;你喜欢对方时，一个温柔的笑意，对方就理解了你的真诚，如果你用语言去表示，有可能打破那种和谐的环境，让对方觉得你这个人不严肃，轻薄没有涵养。
+
+        <br> &nbsp;&nbsp;人是一个很奇特的东西，岂至是人，生命的东西，都有一种心灵感应，袋鼠刚生下来的时候，就知道爬到母亲的育儿袋里，那种默契格外和谐，人和人，谁爱谁，谁不爱谁，心里都有数，不需要高声的喊的，婴儿刚生下来，并不认识人，但睡在母亲的身边时，就显得格外安然，因为他们有一种天然的心灵默契，不需要语言去表述的。
+
+        <br> &nbsp;&nbsp;语言往往是祸根的起因，没有带来幸运，还带来恶运，但从古到今，人们并没有从中吸取历史的经验，还依旧去说，不假思索和不遮掩的去说，往往给自己带来困惑。你不说话，可能你给对方的形象是完美，人格也是健全人，说了话，可能就打破了这种感觉，我爱听和风细雨的语言，你说的却是暴风雨式的话，我对你这个人就有了不好的感觉，可能你这个人在其它方面都很健全，但你在这个时候说了，我就这一生和你无缘了，你可能在此时此境，听到了你和风细雨般的问候，还是从旁边听到人，可能你的形象在我的心中就格外完美，对你有一种崇敬。
+
+        <br> &nbsp;&nbsp;人说话，就要说善于天，善于地，善于你我他的话，这样才不失去人们对你的好感，就是同样的善言，经常去说，人也不会认为你是善人，人们还觉得另有所图，你和我的仇人说话，无疑你也是我的仇人，你和我的朋友说话，自然我就把你划在了我朋友的圈子之中，道理就这么简单，不要看人有肚量，善思维，有分析，有研究事物发展规律的能力，有时候人的狭隘思想容不下一点水的存在，这就是人的心态，所以说人说话是人的本能，但沉默何尝不也是本能呢？不说话的人，你把他划不到任何派别中去，他得不到任何派别利益的同时，自然也不去分担各派带来的任何灾难。
+
+        <br> &nbsp;&nbsp;在公共场所，大家都宁静的坐着，还体现出一种祥和，有一两个爱说话的人，可能就打破了祥和，也搅扰了人们那种宁静的情绪，很不舒服。
+
+        <br> &nbsp;&nbsp;老师教学生说话是最多的，但是太多的说教，未必学生就认为你是一个好的老师，有时用很少的语言，反而收到更多的感招力，领会能力，相信和尊敬。
+
+        <br> &nbsp;&nbsp;圣人的言语留在书本上，人一代一代的传下去，教育着人，感化着人，因为他说的是人生最恰到好处的话，有人说了一辈子的话，不知比圣人多说了几万句，但是谁也没有记在心上，因为那是多余的东西。
+
+        <br> &nbsp;&nbsp;爱你的人，你不说多少我爱你的话，她就会投入你的怀抱，不爱你的人，你就是说的时间在长，人家也不会爱你，说不出来会把你送进精神病院去治疗。
+
+        <br> &nbsp;&nbsp;史马迁是世界上的伟大人物，也是中华民族的一代伟人，也是历代人们崇敬的圣人，就因为说了几句为李陵辩护的话，就遭到了莫大的宫刑耻辱，不要说史马迁难受，就是后人读到此处也感到为之流泪。史马迁为李陵进行了辩护，但并没有因此而改变李陵的命运，既然改变不了，何须要为此而辩护呢？你受到了耻辱，读书的也为此而感伤。假若你不为此辩护，不但能保持心身的安然，史记同样会名流千古，何乐而不为呢？史记的真实和文采也不会为此而逊色。至于李陵的错和对，后人曾有公论。亦有公证的评价。站在旁观者的高度看，一切都是明明白白的。
+
+        <br> &nbsp;&nbsp;沉默是最好的人生，历史上多少风云人物，都化作了尘埃，变作了云烟，你一个茫茫人海中的一栗，说话能改变历史的命运，还是能改变自己的命运，难道你比别人聪明吗？
+        <br> &nbsp;&nbsp;沉默是最好的人生，历史上多少风云人物，都化作了尘埃，变作了云烟，你一个茫茫人海中的一栗，说话能改变历史的命运，还是能改变自己的命运，难道你比别人聪明吗？
+        <br> &nbsp;&nbsp;沉默是最好的人生，历史上多少风云人物，都化作了尘埃，变作了云烟，你一个茫茫人海中的一栗，说话能改变历史的命运，还是能改变自己的命运，难道你比别人聪明吗？
+        <br> &nbsp;&nbsp;沉默是最好的人生，历史上多少风云人物，都化作了尘埃，变作了云烟，你一个茫茫人海中的一栗，说话能改变历史的命运，还是能改变自己的命运，难道你比别人聪明吗？
+        <br> &nbsp;&nbsp;沉默是最好的人生，历史上多少风云人物，都化作了尘埃，变作了云烟，你一个茫茫人海中的一栗，说话能改变历史的命运，还是能改变自己的命运，难道你比别人聪明吗？
+        <br> &nbsp;&nbsp;沉默是最好的人生，历史上多少风云人物，都化作了尘埃，变作了云烟，你一个茫茫人海中的一栗，说话能改变历史的命运，还是能改变自己的命运，难道你比别人聪明吗？
+        <br> &nbsp;&nbsp;沉默是最好的人生，历史上多少风云人物，都化作了尘埃，变作了云烟，你一个茫茫人海中的一栗，说话能改变历史的命运，还是能改变自己的命运，难道你比别人聪明吗？
+        <br> &nbsp;&nbsp;沉默是最好的人生，历史上多少风云人物，都化作了尘埃，变作了云烟，你一个茫茫人海中的一栗，说话能改变历史的命运，还是能改变自己的命运，难道你比别人聪明吗？
+
+
+
+
+
+
+
+    </div>
+     <div class="scroll">
+         <div id="mark" class="mark"></div>
+     </div>
+ </div>
+</body>
+</html>
+<script>
+    window.onload=function(){
+        var mark=document.getElementById("mark");
+        var box=document.getElementById("box");
+        var content=document.getElementById("content");
+        //计算滚动条高度
+        var mark_height=box.offsetHeight/content.offsetHeight*box.offsetHeight;
+        mark.style.height=mark_height+"px";
+        mark.onmousedown=function(event){
+            var event=event || window.event;
+            var height=event.clientY-box.offsetTop-mark.offsetTop;
+            document.onmousemove=function(event){
+                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                var event=event || window.event;
+                var y=event.clientY-box.offsetTop-height;
+                if(y<=0){
+                    y=0;
+                }else if(y>box.offsetHeight-mark.offsetHeight){
+                    y=box.offsetHeight-mark.offsetHeight;
+                }
+                var contentY=y*(content.offsetHeight-box.offsetHeight)/(box.offsetHeight-mark.offsetHeight);
+                content.style.top=-contentY+"px"
+                mark.style.top=y+"px";
+            }
+
+        }
+        document.onmouseup=function(){
+            document.onmousemove=null;
+        }
+        function scroll1(){
+            alert(1);
+        }
+        box.addEventListener("onmousewheel",scroll1);
+//        box.addEventListener("DOMMouseScroll",scroll);
+//        box.attachEvent('onmousewheel',scroll)
+//
+//        if(document.all){
+//            document.onselectstart= function(){return false;}; //for ie
+//        }else{
+//            document.onmousedown= function(){return false;};
+//            document.onmouseup= function(){return true;};
+//        }
+//        document.onselectstart = new Function('event.returnValue=false;');
+    }
+</script>

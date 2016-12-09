@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>表格的添加和删除</title>
+    <link rel="stylesheet" href="../dist/css/bootstrap.css">
+    <style>
+        table {
+
+        }
+        .box {
+            width: 500px;
+            margin: 0px auto;
+        }
+        .table-hover > tbody > tr:hover {
+            background-color: lightpink;
+        }
+        .row {
+            margin-top: 100px;
+            /*border: 1px solid red;*/
+            line-height: 83px;
+        }
+        .col-sm-3 {
+            padding-top: 7px;
+        }
+        a {
+            cursor: pointer;
+        }
+        /*.input {*/
+            /*margin: 50px auto;*/
+            /*border: 1px solid red;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class=" col-sm-4"></div>
+    <div class=" col-sm-3">
+    <input type="text" id="text" class="form-control"  placeholder="输入内容...">
+    </div>
+    <div class="btn col-sm-1">
+    <button type="button"  id="btn"  class="btn btn-primary ">添加</button>
+    </div>
+</div>
+</div>
+<div class="box">
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+            <td>表头1</td>
+            <td>表头2</td>
+            <td>删除</td>
+        </tr>
+        </thead>
+        <tbody >
+        <tr>
+            <td>表头内容1</td>
+            <td>表头内容2</td>
+            <td><a href="javascript:;">删除</a></td>
+        </tr>
+        <tr>
+            <td>表头内容1</td>
+            <td>表头内容2</td>
+            <td><a href="javascript:;">删除</a></td>
+        </tr>
+        <tr>
+            <td>表头内容1</td>
+            <td>表头内容2</td>
+            <td><a href="javascript:;">删除</a></td>
+        </tr>
+        <tr>
+            <td>表头内容1</td>
+            <td>表头内容2</td>
+            <td><a href="javascript:;">删除</a></td>
+        </tr>
+        <tr>
+            <td>表头内容1</td>
+            <td>表头内容2</td>
+            <td><a href="javascript:;">删除</a></td>
+        </tr>
+        <tr>
+            <td>表头内容1</td>
+            <td>表头内容2</td>
+            <td><a href="javascript:;" >删除</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+<script>
+    window.onload=function(){
+        var btn=document.getElementById("btn");
+        var text=document.getElementById("text");
+        var tbody=document.getElementsByTagName("tbody")[0];
+        var a=document.getElementsByTagName("a");
+        var tr=tbody.children;
+        btn.onclick=function(){
+            var value=text.value;
+            var tr=document.createElement("tr");
+            var td1=document.createElement("td");
+            var td2=document.createElement("td");
+            var td3=document.createElement("td");
+            td1.innerHTML=value;
+            td2.innerHTML="表头内容2";
+            td3.innerHTML="<a href='javascript:;'>删除</a>"
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tbody.appendChild(tr);
+
+            length= a.length;
+            for(var i=0;i<length; i++){
+                a[i].onclick=function(){
+                    tbody.removeChild(this.parentNode.parentNode);
+                }
+            }
+        }
+
+        var length= a.length;
+        for(var i=0;i<length; i++){
+            a[i].onclick=function(){
+                tbody.removeChild(this.parentNode.parentNode);
+               }
+        }
+
+
+
+
+
+    }
+</script>

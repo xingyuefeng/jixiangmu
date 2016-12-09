@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3遮罩</title>
+    <style>
+        ul {
+            list-style: none;
+            /*padding: 0;*/
+        }
+        li {
+            padding: 0;
+            float: left;
+            margin-left: 10px;
+            margin-top: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            width: 300px;
+            height: 300px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            display: block;
+
+        }
+        li div{
+            /*position: absolute;*/
+            left: 0;
+            top: -300px;
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(0,0,0,0.5);
+            /*border: 1px solid red;*/
+        }
+        .zc1 {
+            left: 0;
+            top: -300px;
+            tansition: all .3 linear;
+        }
+        .zc2 {
+            top: 0;
+            left: -300px;
+        }
+        .zc3 {
+            top: 300px;
+            left: 0;
+        }
+        .zc4 {
+            top: 0;
+            left: 300px;
+        }
+        li:nth-child(1):hover  .zc1{
+            top: 0;
+            transform: rotate(90deg);
+           transition: all .3s linear;
+        }
+        li:nth-child(2):hover  .zc2{
+            left: 0;
+            transform: rotate(-90deg);
+            transition: all .3s ease-in;
+        }
+        li:nth-child(3):hover  .zc3{
+            top: 0px;
+            transform: rotate(180deg);
+            transition: all .3s ease-in-out;
+        }
+        li:nth-child(4):hover  .zc4{
+            transform: rotate(180deg);
+            left: 0px;
+            transition: all .3s ease-in-out;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li>
+            <img src="images/zc1.jpg" alt="">
+            <div id="zc1" class="zc1">111</div>
+        </li>
+        <li>
+            <img src="images/zc2.jpg" alt="">
+            <div id="zc2" class="zc2">222</div>
+        </li>
+        <li>
+            <img src="images/zc3.jpg" alt="">
+            <div id="zc3" class="zc3"></div>
+        </li>
+        <li>
+            <img src="images/zc4.jpg" alt="">
+            <div id="zc4" class="zc4"></div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

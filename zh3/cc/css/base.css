@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.top {
+    position: relative;
+    left: 0;
+    top: 0;
+    height: 97px;
+    width: 100%;
+    background: url(../images/headbg.png) repeat-x ;
+}
+.top .center {
+    position: absolute;
+    top: 0;
+    left: 175px;
+    width: 1000px;
+    height: 90px;
+    background-color: white;
+}
+.logoLeft {
+
+    width: 489px;
+    height: 90px;
+    background: url(../images/top_logo.jpg) no-repeat;
+}
+.logoRight {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+
+}
+.nav {
+    height: 40px;
+    width: 100%;
+    background: url(../images/nav.png) repeat-x;
+    position: relative;
+}
+.nav .bar ul{
+    position: absolute;
+    left: 175px;
+    list-style: none;
+
+
+}
+.nav .bar ul li {
+    float: left;
+    position: relative;
+    height: 40px;
+    width: 122px;
+    text-align: center;
+    line-height: 40px;
+    margin-right: 15px;
+}
+.nav .bar ul li span {
+    position: absolute;
+    right: 1px;
+
+}
+.nav .bar ul li a{
+    text-decoration: none;
+    font-size: 14px;
+    font-family: "宋体";
+    color: black;
+    height: 40px;
+    width: 120px;
+}
+.nav .bar ul li a:hover {
+    color: red;
+}
+

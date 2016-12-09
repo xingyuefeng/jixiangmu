@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>单元行上鼠标悬浮提示</title>
+    <style>
+        ul {
+            list-style: none;
+
+        }
+        .box {
+            margin: 100px auto;
+            width: 500px;
+        }
+        li {
+            margin-top: 20px;
+            cursor: pointer;
+            line-height: 20px;
+            /*border: 1px solid red;*/
+
+
+        }
+        li:hover {
+            color: red;
+            text-decoration: underline
+
+        }
+        
+        #mark {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 25px;
+            color: white;
+            background-color: rgba(0,0,0, 0.6);
+            border-radius: 5px;
+            line-height: 25px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+<ul id="ul" >
+    <li>1. 只有登上山顶，才能看到那边的风光。</li>
+    <li>2. 骏马是跑出来的，强兵是打出来的。</li>
+    <li>3. 驾驭命运的舵是奋斗。不抱有一丝幻想，不放弃一点机会，不停止一日努力。</li>
+    <li>4. 如果惧怕前面跌宕的山岩，生命就永远只能是死水一潭。</li>
+    <li>5. 懦弱的人只会裹足不前，莽撞的人只能引为烧身，只有真正勇敢的人才能所向披靡。</li>
+    <li>6. 我们这个世界，从不会给一个伤心的落伍者颁发奖牌。</li>
+</ul>
+</div>
+<div id="mark"></div>
+</body>
+</html>
+<script>
+    window.onload=function(){
+        var ul=document.getElementById("ul");
+        var mark=document.getElementById("mark");
+        var li=ul.children;
+
+        for(var i=0;i<ul.children.length;i++){
+            li[i].onmouseover=function(event){
+                var content=this.innerHTML.substr(2,12);
+                var event=event || window.event;
+                mark.style.display="block";
+                mark.innerHTML=content;
+                mark.style.left=event.clientX+10+"px";
+                mark.style.top=event.clientY+10+"px";
+
+            }
+            li[i].onmousemove=function(event){
+                var event=event || window.event;
+                mark.style.left=event.clientX+10+"px";
+                mark.style.top=event.clientY+10+"px";
+            }
+            li[i].onmouseout=function(){
+                mark.style.display="none";
+            }
+        }
+
+    }
+</script>

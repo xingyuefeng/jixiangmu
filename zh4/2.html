@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab栏切换</title>
+    <link rel="stylesheet" href="../styles/base.css">
+    <style>
+        .box {
+            height: 450px;
+            width: 232px;
+            border: 1px solid gray;
+            margin: 100px auto;
+        }
+        .left,.right {
+            float: left;
+            width: 115px;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            cursor: pointer;
+        }
+        .right {
+            background-color: lightgray;
+        }
+        ul {
+            margin-top: 40px;
+        }
+        ul>li {
+            border-bottom: 1px solid gray;
+            /*height: 70px;*/
+            line-height: 40px;
+            padding-left: 30px;
+            position: relative;
+            cursor: pointer;
+        }
+        ul>li:hover {
+            color: orange;
+        }
+       div  ul>li:hover span {
+            background-color: orange;
+        }
+        ul>li> span {
+            position: absolute;
+            content: '';
+            left: 3px;
+            top: 8px;
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            line-height: 25px;
+            text-align: center;
+            font-size: 12px;
+            color: white;
+        }
+        ul>li:nth-child(1)> span{
+            background-color: orange;
+        }
+        ul>li:nth-child(2)> span{
+            background-color: lightgray;
+        }
+        ul>li:nth-child(3)> span{
+            background-color: gainsboro;
+        }
+        ul>li:nth-child(n+4)> span{
+            background-color: gray;
+        }
+        #ios {
+            display: none;
+        }
+        .deatil {
+
+        }
+        .deatil a{
+            float: left;
+        }
+        .deatil div {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="top">
+            <div id="left" class="left">安卓风云榜</div>
+            <div id="right" class="right ">ios风云榜</div>
+        </div>
+        <ul id="az">
+            <li><span>1</span>魔力宝贝（风靡亚洲)
+
+            </li>
+            <li><span>2</span>去吧皮卡丘</li>
+            <li><span>3</span>剑魂之刃(手操之王)</li>
+            <li><span>4</span>神之刃(神之作)</li>
+            <li><span>5</span>时空猎人(街机格斗)</li>
+            <li><span>6</span>暖暖环游世界</li>
+        </ul>
+        <ul id="ios">
+            <li><span>1</span>时空猎人(街机格斗) </li>
+            <li><span>2</span>皇室战争</li>
+            <li><span>3</span>大掌门(第一武侠)</li>
+            <li><span>4</span>花样爷爷官方版手游</li>
+            <li><span>5</span>梦里寻她</li>
+            <li><span>6</span>大家来找茬</li>
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+    window.onload=function(){
+        var btn_left=document.getElementById("left");
+        var btn_right=document.getElementById("right");
+        var az=document.getElementById("az");
+        var ios=document.getElementById("ios");
+        btn_left.onclick=function(){
+            btn_right.style.backgroundColor='lightgray';
+            this.style.backgroundColor="white";
+            ios.style.display='none';
+            az.style.display='block';
+        }
+        btn_right.onclick=function(){
+            btn_left.style.backgroundColor='lightgray';
+            this.style.backgroundColor="white";
+            az.style.display='none';
+            ios.style.display='block';
+        }
+        for(var i=0;i<az.children.length;i++){
+
+        }
+    }
+</script>

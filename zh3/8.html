@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>拖动滑块验证</title>
+    <link rel="stylesheet" href="../styles/base.css">
+    <style>
+        .box {
+            width: 300px;
+            height: 40px;
+            line-height: 40px;
+            /*border: 1px solid red;*/
+            left: 50%;
+            margin-left: -150px;
+            margin-top: 100px;
+            text-align: center;
+            position: relative;
+        }
+        .inner {
+            width: 300px;
+            height: 40px;
+            background-color: darkgray;
+            position: absolute;
+            z-index: 1;
+
+        }
+        span {
+            position: absolute;
+            color: white;
+            left: 92px;
+            top: 0;
+            z-index: 200;
+        }
+        .mark {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50px;
+            height: 40px;
+            background-color: lightpink;
+            font-size: 18px;
+            color: white;
+            cursor: move;
+            z-index: 300;
+        }
+
+        .outer {
+            position: absolute;
+            width: 0;
+            height: 40px;
+            background-color: deepskyblue;
+            z-index: 100;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="big_box" class="box">
+        <div id="outer" class="outer"></div>
+        <div class="inner"></div>
+        <span >拖动滑块验证</span>
+        <div id="box" class="mark">>>></div>
+    </div>
+</body>
+</html>
+<script>
+    window.onload=function(){
+        var box=document.getElementById("box");
+        var big_box=document.getElementById("big_box");
+        var outer=document.getElementById("outer");
+        var flag=true;
+        var span=document.getElementsByTagName("span")[0];
+        if(document.all){
+            document.onselectstart= function(){return false;}; //for ie
+        }else{
+            document.onmousedown= function(){return false;};
+            document.onmouseup= function(){return true;};
+        }
+        box.onmousedown=function(event){
+
+            document.onselectstart = new Function('event.returnValue=false;');
+            var event=event || window.event;
+            var width=event.clientX-big_box.offsetLeft-box.offsetLeft;
+            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+            if(flag==true) {
+                document.onmousemove = function (event) {
+                    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                    var event = event || window.event;
+                    console.log(width);
+                    var x = event.clientX - big_box.offsetLeft - width;
+//               console.log(x)
+                    if (x < 0) {
+                        x = 0;
+                    } else if (x > big_box.offsetWidth - box.offsetWidth) {
+                        x = big_box.offsetWidth - box.offsetWidth;
+//                    box.style.left=big_box.offsetWidth-box.offsetWidth+"px";
+                        box.innerHTML = "√";
+                        span.innerHTML="恭喜你，通过验证"
+                        document.onmousemove = null;
+                        flag=false;
+                    }
+                    outer.style.width = x + "px";
+                    box.style.left = x + "px";
+                }
+            }
+        }
+        document.onmouseup=function(){
+            if(box.offsetLeft<big_box.offsetWidth - box.offsetWidth){
+                box.style.left = 0 + "px";
+                outer.style.width=0;
+            }
+            document.onmousemove=null;
+        }
+    }
+</script>

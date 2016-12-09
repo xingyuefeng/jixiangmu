@@ -1,0 +1,138 @@
+.banner {
+    margin-top: 1px;
+    height: 950px;
+    background-color: #ededed;
+}
+.main  {
+    width: 1000px;
+    margin: 0 auto;
+    font-size: 14px;
+    font-family: "宋体";
+
+}
+.main .left {
+    padding-top: 11px;
+    width: 600px;
+    height: 818px;
+    overflow: hidden;
+    float: left;
+    position: relative;
+}
+.main .left .img img {
+    float: left;
+    width: 600px;
+    height: 818px;
+}
+.main .left .img {
+    position: absolute;
+    width: 1000%;
+}
+.circle {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 1;
+}
+.circle ul {
+    list-style: none;
+}
+.circle .current {
+    background: url(../images/01.png) no-repeat;
+}
+.circle li {
+    cursor: pointer;
+    float: left;
+    height: 20px;
+    width: 20px;
+    background: url(../images/02.png) no-repeat;
+}
+
+
+
+.main .right {
+    float: left;
+    margin-top: 19px;
+    margin-left: 11px;
+    width: 360px;
+    height: 811px;
+    overflow: hidden;
+
+
+}
+.main .right .introduce {
+    text-align: center;
+}
+.main .right .right-top {
+    height: 400px;
+    width: 360px;
+    background-color: white;
+    position: relative;
+    line-height: 20px;
+}
+.main .right .right-top .index1{
+    margin-left: 35px;
+    margin-top: 15px;
+
+}
+.main .right .right-top p{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.main .right .right-top a{
+    position: absolute;
+    right: 5px;
+}
+.main .right .right-bottom {
+    position: relative;
+    margin-top: 20px ;
+    height: 400px;
+    width: 360px;
+    background-color: white;
+
+}
+.main .right .right-bottom a {
+    position: absolute;
+    right: 5px;
+}
+.main .right .right-bottom .index1{
+    margin-left: 35px;
+    margin-top: 15px;
+
+}
+.gonggao {
+
+    height: 130px;
+    overflow: hidden;
+    text-align: center;
+}
+.gonggao li {
+    margin-top: 5px;
+    list-style: disc;
+}
+
+.banner .bottom {
+    width: 1000px;
+    height: 68px;
+    background-color: #B9160F;
+    position: absolute;
+    top: 990px;
+    left: 175px;
+    text-align: center;
+    font-size: 12px;
+    font-family: "宋体";
+    color: white;
+}
+.banner .bottom .bottom-top {
+    margin-top: 10px;
+}
+.banner .bottom .bottom-bottom {
+    margin-top: 10px;
+}
+.right-bottom .introduce {
+    padding-top: 5px;
+}
+.right-top .introduce {
+    padding-top: 5px;
+}
+
+
